@@ -8,7 +8,7 @@ Min_Ang = 1
 RED=(255,0,0)
 
 class Launcher:
-  def __init__(self, x, y):
+  def __init__(self, x, y): #constructor
     self.x = x
     self.y = y
     self.mag = 20
