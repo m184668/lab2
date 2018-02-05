@@ -13,6 +13,9 @@ surf = pygame.display.set_mode((400,400),0,32)
 BLUE = (0,0,255)
 GREEN = (0,255,0)
 
+#Set up launcher
+my_launcher = launcher.Launcher(0,400)
+
 #Set up FPS
 FPS = 30
 fpsClock = pygame.time.Clock()
@@ -32,19 +35,20 @@ def draw_world(surf):
 
 while(True):
   draw_world(surf)
+  
   for event in pygame.event.get():
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
     if event.type == pygame.KEYDOWN:
-      if event.key == pygame.K_UP:
-        launcher.changeAngle(3)
-      if event.key == pygame.K_DOWN
-        launcher.changeAngle(-3)
-      if event.key == pygame.K_LEFT
-        launcher.changeMagnitude(-5)
-      if event.key == pygame.K_RIGHT
-        launcher.changeMagnitude(10)
+    	if event.key == pygame.K_UP:
+        	my_launcher.changeAngle(3)
+      	if event.key == pygame.K_DOWN:
+        	my_launcher.changeAngle(-3)
+      	if event.key == pygame.K_LEFT:
+        	my_launcher.changeMagnitude(-5)
+      	if event.key == pygame.K_RIGHT:
+        	my_launcher.changeMagnitude(10)
   my_launcher.draw(surf)
   pygame.display.update()
   fpsClock.tick(FPS)
