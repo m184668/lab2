@@ -3,7 +3,7 @@ import pygame, sys, math
 Max_Mag = 100
 Min_Mag = 10
 Max_Ang = 90
-Min_Ang = 0
+Min_Ang = 1
 
 RED=(255,0,0)
 
@@ -25,8 +25,8 @@ class Launcher:
     self.ang = self.ang + delta
     if(self.ang > Max_Ang):
       self.ang = Max_Ang
-    if(self.ang < Min_Ang):
-      self.mag = Min_Ang
+    if(self.ang <= Min_Ang):
+      self.ang = Min_Ang
 
   def draw(self,surf):
     ex=self.x+self.mag*math.cos(math.radians(self.ang))

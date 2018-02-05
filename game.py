@@ -35,20 +35,19 @@ def draw_world(surf):
 
 while(True):
   draw_world(surf)
-  
   for event in pygame.event.get():
-    if event.type == QUIT:
-      pygame.quit()
-      sys.exit()
-    if event.type == pygame.KEYDOWN:
-    	if event.key == pygame.K_UP:
-        	my_launcher.changeAngle(3)
-      	if event.key == pygame.K_DOWN:
-        	my_launcher.changeAngle(-3)
-      	if event.key == pygame.K_LEFT:
-        	my_launcher.changeMagnitude(-5)
-      	if event.key == pygame.K_RIGHT:
-        	my_launcher.changeMagnitude(10)
+    	if event.type == QUIT:
+      		pygame.quit()
+      		sys.exit()
+    	if event.type == pygame.KEYDOWN:
+    		if event.key == pygame.K_UP:
+        		my_launcher.changeAngle(3)
+      		if event.key == pygame.K_DOWN:
+        		my_launcher.changeAngle(-3)
+      		if event.key == pygame.K_LEFT:
+       			my_launcher.changeMagnitude(-5)
+ 		if event.key == pygame.K_RIGHT:
+        		my_launcher.changeMagnitude(10)
   my_launcher.draw(surf)
   pygame.display.update()
   fpsClock.tick(FPS)
