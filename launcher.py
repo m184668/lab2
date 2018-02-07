@@ -28,8 +28,14 @@ class Launcher:
     if(self.ang <= Min_Ang):
       self.ang = Min_Ang
 
+  def fire(self, rock):
+    rock.v_x= self.mag*math.cos(math.radians(self.ang))
+    rock.v_y= self.mag*math.sin(math.radians(self.ang))
+
   def draw(self,surf):
     ex=self.x+self.mag*math.cos(math.radians(self.ang))
     ey=self.y-self.mag*math.sin(math.radians(self.ang))
     pygame.draw.line(surf, RED, (self.x, self.y), (ex,ey), 6)
+
+
 #pygame.display.update() #I do not know if we want this here or somewhere else

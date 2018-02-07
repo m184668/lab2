@@ -3,7 +3,12 @@
 import serial
 import pygame,sys
 from pygame.locals import *
+
+
 import launcher
+import rock
+
+from color import *
 
 #Set up Window
 pygame.init()
@@ -15,6 +20,7 @@ GREEN = (0,255,0)
 
 #Set up launcher
 my_launcher = launcher.Launcher(0,400)
+my_rock = rock.Rock(0,400)
 
 #Set up FPS
 FPS = 30
@@ -36,18 +42,26 @@ def draw_world(surf):
 while(True):
   draw_world(surf)
   for event in pygame.event.get():
-    	if event.type == QUIT:
-      		pygame.quit()
-      		sys.exit()
-    	if event.type == pygame.KEYDOWN:
-    		if event.key == pygame.K_UP:
-        		my_launcher.changeAngle(3)
-      		if event.key == pygame.K_DOWN:
-        		my_launcher.changeAngle(-3)
-      		if event.key == pygame.K_LEFT:
-       			my_launcher.changeMagnitude(-5)
- 		if event.key == pygame.K_RIGHT:
-        		my_launcher.changeMagnitude(10)
+    if event.type == QUIT:
+      pygame.quit()
+      sys.exit()
+    if event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_UP:
+        my_launcher.changeAngle(3)
+      if event.key == pygame.K_DOWN:
+        my_launcher.changeAngle(-3)
+      if event.key == pygame.K_LEFT:
+        my_launcher.changeMagnitude(-5)
+      if event.key == pygame.K_RIGHT:
+        my_launcher.changeMagnitude(10)
+      if event.key == pygame.K_SPACE and (not my_rock.isMoving()):
+        my_launcher.fire(my_rock)
+  
+  # 2. Do game logic
+  my_rock.move(1.0/FPS)
+ 
+  # 3. draw Everything
   my_launcher.draw(surf)
+  my_rock.draw(surf)
   pygame.display.update()
   fpsClock.tick(FPS)
