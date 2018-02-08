@@ -13,9 +13,9 @@ class Rock:
 
   def move(self, time):
     self.x = self.x + self.v_x*time
-    if(self.y< 400):    
+    if(self.v_y != 0):    
       self.v_y = self.v_y + G * time
-      self.y = self.y - self.v_y*time
+    self.y = self.y + self.v_y*time
 
   def isMoving(self):
     return (self.v_x != 0) or (self.v_y != 0)

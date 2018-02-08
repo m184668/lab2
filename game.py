@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 import serial
-import pygame,sys
+import pygame,sys, random, time
 from pygame.locals import *
 
 
@@ -15,14 +15,12 @@ from color import *
 pygame.init()
 surf = pygame.display.set_mode((400,400),0,32)
 
-#set up colors
-BLUE = (0,0,255)
-GREEN = (0,255,0)
-
 #Set up launcher
 my_launcher = launcher.Launcher(0,400)
 my_rock = rock.Rock(0,400)
-my_target = target.Target(200, 380)
+my_target = target.Target((random.random()*280)+100, 385)
+
+objs = [my_launcher, my_rock, my_target]
 
 #Set up FPS
 FPS = 30
@@ -38,7 +36,6 @@ def draw_world(surf):
   surf.blit(textSurfaceObj,textRectObj)
   pygame.draw.rect(surf,GREEN,(0,380,500,400))
   pygame.display.update()
-
 
 
 while(True):
@@ -63,8 +60,9 @@ while(True):
   my_rock.move(1.0/FPS)
  
   # 3. draw Everything
-  my_launcher.draw(surf)
-  my_target.draw(surf)
-  my_rock.draw(surf)
+  for obj in objs:
+    obj.draw(surf)
+
+
   pygame.display.update()
   fpsClock.tick(FPS)
