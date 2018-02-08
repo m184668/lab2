@@ -30,7 +30,7 @@ class Launcher:
 
   def fire(self, rock):
     rock.v_x= self.mag*math.cos(math.radians(self.ang))
-    rock.v_y= self.mag*math.sin(math.radians(self.ang))
+    rock.v_y= -1*self.mag*math.sin(math.radians(self.ang))
 
   def draw(self,surf):
     ex=self.x+self.mag*math.cos(math.radians(self.ang))

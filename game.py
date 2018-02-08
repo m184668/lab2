@@ -7,6 +7,7 @@ from pygame.locals import *
 
 import launcher
 import rock
+import target
 
 from color import *
 
@@ -21,6 +22,7 @@ GREEN = (0,255,0)
 #Set up launcher
 my_launcher = launcher.Launcher(0,400)
 my_rock = rock.Rock(0,400)
+my_target = target.Target(200, 380)
 
 #Set up FPS
 FPS = 30
@@ -62,6 +64,7 @@ while(True):
  
   # 3. draw Everything
   my_launcher.draw(surf)
+  my_target.draw(surf)
   my_rock.draw(surf)
   pygame.display.update()
   fpsClock.tick(FPS)
