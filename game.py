@@ -16,14 +16,14 @@ pygame.init()
 surf = pygame.display.set_mode((400,400),0,32)
 
 #Set up launcher
-my_launcher = launcher.Launcher(0,400)
-my_rock = rock.Rock(0,400)
-my_target = target.Target((random.random()*280)+100, 385)
+my_launcher = launcher.Launcher(0,380)
+my_rock = rock.Rock(0,380)
+my_target = target.Target((random.random()*280)+100, 380)
 
 objs = [my_launcher, my_rock, my_target]
 
 #Set up FPS
-FPS = 30
+FPS = 120
 fpsClock = pygame.time.Clock()
 
 #Drawing world 
@@ -58,6 +58,13 @@ while(True):
   
   # 2. Do game logic
   my_rock.move(1.0/FPS)
+  if(my_rock.y>400):
+    my_rock.moveTo(0,380)
+    print("you missed!")
+
+  if(my_target.hitBy(my_rock)):
+    my_rock.moveTo(0,380)
+    print("you hit it!")
  
   # 3. draw Everything
   for obj in objs:
